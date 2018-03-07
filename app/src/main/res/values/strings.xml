@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyProfileStats</string>
+    <string name="text_lose">Lose</string>
+    <string name="text_win">Win</string>
+    <string name="text_duration">Duration</string>
+    <string name="text_hero_dmg">Hero dmg</string>
+    <string name="text_gpm">GPM</string>
+    <string name="text_xpm">XPM</string>
+    <string name="text_hero_healing">HH</string>
+    <string name="text_tower_dmg">Tower dmg</string>
+    <string name="text_last_hits">Last hits</string>
+    <string name="text_kda">KDA</string>
+    <string name="text_button_more_info">More info</string>
+    <string name="text_match_date">Match date</string>
+    <string name="text_game_mode">Game mode</string>
+    <string name="no_internet_connection">No internet connection</string>
+</resources>
