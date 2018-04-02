@@ -3,7 +3,6 @@ package com.example.legion.myprofilestats.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ public class FragmentMoreStats extends BaseFragment {
     @SuppressLint("InflateParams")
     @Override
     protected void initView(LayoutInflater inflater, Bundle savedInstanceState) {
-        mCurrentView = inflater.inflate(R.layout.fragment_fragment_more_stats, null);
+        currentView = inflater.inflate(R.layout.fragment_fragment_more_stats, null);
         TextView lastHits = findViewById(R.id.values_last_hits);
         TextView valueXpm = findViewById(R.id.values_xpm);
         TextView valueGpm = findViewById(R.id.values_gpm);

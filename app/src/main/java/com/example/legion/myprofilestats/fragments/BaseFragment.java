@@ -15,26 +15,26 @@ import com.example.legion.myprofilestats.models.OpenDotaMatchesModel;
  */
 
 public abstract class BaseFragment extends Fragment {
-    protected MainActivity mMainActivity;
-    protected View mCurrentView; //View of fragment
+    protected MainActivity mainActivity;
+    protected View currentView; //View of fragment
     protected OpenDotaMatchesModel model;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context != null && context instanceof MainActivity) {
-            mMainActivity = (MainActivity) context;
+            mainActivity = (MainActivity) context;
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initView(inflater, savedInstanceState);
-        return mCurrentView;
+        return currentView;
     }
 
     protected <T extends View> T findViewById(int id) {
-        return mCurrentView == null ? null : (T) mCurrentView.findViewById(id);
+        return currentView == null ? null : (T) currentView.findViewById(id);
     }
 
     protected abstract void initView(LayoutInflater inflater, Bundle savedInstanceState);

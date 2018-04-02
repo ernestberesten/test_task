@@ -1,30 +1,22 @@
 package com.example.legion.myprofilestats.utils;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.graphics.Color;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.legion.myprofilestats.MatchesApplication;
 import com.example.legion.myprofilestats.R;
-import com.example.legion.myprofilestats.models.GameMode;
 import com.example.legion.myprofilestats.models.OpenDotaMatchesModel;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +28,9 @@ import java.util.concurrent.TimeUnit;
 public class Utils {
     private static final Utils ourInstance = new Utils();
 
-    private static final Map<String, String> gameModes = new HashMap();
+    private static final Map<String, String> gameModes = new HashMap<>();
+    private static final String DURATION_FORMAT = "%02d:%02d:%02d";
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     static {
         gameModes.put("0", "Unknown");
@@ -46,8 +40,6 @@ public class Utils {
         gameModes.put("4", "Single Draft");
         gameModes.put("5", "All Random");
         gameModes.put("15", "Custom");
-        gameModes.put("4", "Single Draft");
-        gameModes.put("4", "Single Draft");
 
     }
 
@@ -80,11 +72,10 @@ public class Utils {
 
     public String getMatchDuration(OpenDotaMatchesModel matchModel) {
         long millis = Long.parseLong(matchModel.getDuration());
-        @SuppressLint("DefaultLocale") String hms = String.format("%02d:%02d:%02d",
+        return String.format(Locale.getDefault(), DURATION_FORMAT,
                 TimeUnit.SECONDS.toHours(millis),
                 TimeUnit.SECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
                 TimeUnit.SECONDS.toSeconds(millis) % TimeUnit.MINUTES.toSeconds(1));
-        return hms;
     }
 
     public String getValueKDA(OpenDotaMatchesModel matchModel) {
@@ -92,7 +83,7 @@ public class Utils {
     }
 
     public String getMatchDate(long mills) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
         return sdf.format(new Date(mills * 1000));
     }
 

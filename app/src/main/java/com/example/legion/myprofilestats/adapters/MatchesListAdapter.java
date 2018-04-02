@@ -16,6 +16,9 @@ import com.example.legion.myprofilestats.utils.Utils;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Ernest on 06.03.2018.
  */
@@ -25,6 +28,7 @@ public class MatchesListAdapter extends RecyclerView.Adapter<MatchesListAdapter.
     private final LayoutInflater layoutInflater;
     private final List<OpenDotaMatchesModel> matchModelList;
     private final MainActivity mainActivity;
+
 
     public MatchesListAdapter(MainActivity mainActivity, List<OpenDotaMatchesModel> matchModelList) {
         this.matchModelList = matchModelList;
@@ -60,17 +64,15 @@ public class MatchesListAdapter extends RecyclerView.Adapter<MatchesListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        final ImageView heroIcon;
-        final TextView heroName, isGameWin, matchDuration;
-        final Button buttonMoreInfo;
+        @BindView(R.id.hero_icon) ImageView heroIcon;
+        @BindView(R.id.hero_name) TextView heroName;
+        @BindView(R.id.is_game_win) TextView isGameWin;
+        @BindView(R.id.value_duration) TextView matchDuration;
+        @BindView(R.id.button_more_info) Button buttonMoreInfo;
 
         ViewHolder(View view) {
             super(view);
-            heroIcon = view.findViewById(R.id.hero_icon);
-            heroName = view.findViewById(R.id.hero_name);
-            isGameWin = view.findViewById(R.id.is_game_win);
-            matchDuration = view.findViewById(R.id.value_duration);
-            buttonMoreInfo = view.findViewById(R.id.button_more_info);
+            ButterKnife.bind(this, view);
         }
     }
 }
